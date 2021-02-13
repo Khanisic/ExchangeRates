@@ -16,7 +16,17 @@ const valueINR = document.getElementById('INR');
 const valueGBP = document.getElementById('GBP');
 const valueJPY = document.getElementById('JPY');
 const valueUSD = document.getElementById('USD');
-// console.log(valueCAD);
+
+valueCAD.oninput = function(){
+    var temp = valueCAD.value;
+    Rates( data =>{
+        valueINR.value = ( temp * data.rates.CAD / data.rates.CAD ).toFixed(2);
+        valueGBP.value = (temp * data.rates.GBP / data.rates.CAD).toFixed(2);
+        valueJPY.value = (temp * data.rates.JPY / data.rates.CAD).toFixed(2);
+        valueUSD.value = (temp * data.rates.USD / data.rates.CAD).toFixed(2);
+    });
+
+};
 
 valueINR.oninput = function(){
     var temp = valueINR.value;
